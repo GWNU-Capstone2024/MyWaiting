@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments.html :: head}"></head>
+<body>
+<nav th:replace="~{fragments.html :: navigation-bar}"></nav>
+<div class="container">
+    <h2>UserRegister</h2>
+    <form action="/user/register" method="post">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+        <input type="submit" class="btn btn-primary" value="회원가입">
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments.html :: head}"></head>
+<body>
+<nav th:replace="~{fragments.html :: navigation-bar}"></nav>
+<div class="container">
+    <h2>TicketCreate</h2>
+    <form action="/ticket/create" method="post">
+        <input type="hidden" name="restaurantId" th:value="${restaurant.id}">
+        <div class="mb-3">
+            <label for="headCount" class="form-label">인원 수</label>
+            <input type="number" name="headCount" class="form-control" id="headCount">
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">메시지</label>
+            <input type="text" name="description" class="form-control" id="description">
+        </div>
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+        <input type="submit" class="btn btn-primary" value="웨이팅 신청">
+    </form>
+</div>
+</body>
+</html>

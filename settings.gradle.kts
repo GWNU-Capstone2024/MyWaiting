@@ -1,1 +1,1 @@
-rootProject.name = "MyWaiting"
+rootProject.name = "MWaiting"

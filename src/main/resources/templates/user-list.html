@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments.html :: head}"></head>
+<body>
+<nav th:replace="~{fragments.html :: navigation-bar}"></nav>
+<div class="container">
+    <h2>UserList</h2>
+    <table class="table table-striped">
+        <tr>
+            <th>id</th>
+            <th>memberEmail</th>
+            <th>상세조회</th>
+            <th>삭제</th>
+        </tr>
+        <tr th:each="user: ${userList}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.email}"></td>
+            <td>
+                <!-- query string /user?id=1
+                    rest api /user/1
+
+                    원래는 조회/삭제 이런 것들 /user/1 똑같은 주소에서
+                    Get, Delete 이런 방법의 차이로 처리를 해야 하는데
+                    js도 써야하는 axios 같은 비동기 통신 방법을 같이 써줘야 한다
+                    일단은 이렇게-->
+                <a th:href="@{|/user/${user.id}|}">조회</a>
+            </td>
+            <td>
+                <a th:href="@{|/user/delete/${user.id}|}">삭제</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

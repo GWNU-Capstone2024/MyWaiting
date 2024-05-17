@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments.html :: head}"></head>
+<body>
+<nav th:replace="~{fragments.html :: navigation-bar}"></nav>
+<div class="container">
+    <h2>RestaurantDetail</h2>
+    <table class="table table-striped">
+        <tr>
+            <th>id</th>
+            <th>userEmail</th>
+            <th>name</th>
+            <th>phoneNumber</th>
+            <th>address</th>
+            <th>time</th>
+            <th>description</th>
+        </tr>
+        <tr>
+            <td th:text="${restaurant.id}"></td>
+            <td th:text="${restaurant.user.getEmail}"></td>
+            <td th:text="${restaurant.getName}"></td>
+            <td th:text="${restaurant.getPhoneNumber}"></td>
+            <td th:text="${restaurant.getAddress}"></td>
+            <td th:text="${restaurant.getTime}"></td>
+            <td th:text="${restaurant.getDescription}"></td>
+        </tr>
+    </table>
+    <a th:href="@{|/restaurant/qr/${restaurant.id}|}">QR보기</a>
+    <a th:href="@{|/restaurant-home/${restaurant.id}|}">관리 화면</a>
+</div>
+</body>
+</html>

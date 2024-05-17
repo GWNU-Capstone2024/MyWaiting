@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments.html :: head}"></head>
+<body>
+<nav th:replace="~{fragments.html :: navigation-bar}"></nav>
+<div class="container">
+    <h2 th:text="${restaurant.getName}+'식당 관리'"></h2>
+    <table class="table table-striped">
+        <tr>
+            <th>id</th>
+            <th>user</th>
+            <th>num</th>
+            <th>state</th>
+            <th>headCount</th>
+            <th>description</th>
+            <th>처리</th>
+        </tr>
+        <tr th:each="ticket: ${tickets}">
+            <td th:text="${ticket.id}"></td>
+            <td th:text="${ticket.user.email}"></td>
+            <td th:text="${ticket.number}"></td>
+            <td th:text="${ticket.state}"></td>
+            <td th:text="${ticket.headCount}"></td>
+            <td th:text="${ticket.description}"></td>
+            <td>
+                <a th:if="${ticket.isStateWaiting()}">호출</a>
+                <a th:if="${ticket.isStateWaiting()}" th:href="@{|/ticket/${ticket.id}/reject|}">취소</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
+

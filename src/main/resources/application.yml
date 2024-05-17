@@ -1,12 +1,41 @@
 spring:
   application:
-    name: MyWaiting
+    name: MWaiting
+      #  h2:
+      #    console:
+      #      enabled: true
+      #      path: /h2-console
+      #  datasource:
+      #    url: jdbc:h2:~/test
+      #    driver-class-name: org.h2.Driver
+      #    username: sa
+      #    password:
+      #  jpa:
+      #    database-platform: org.hibernate.dialect.H2Dialect
+      #    properties:
+      #      hibernate:
+      #        dialect: org.hibernate.dialect.H2Dialect
+      #        format_sql: true
+      #        show_sql: true
+      #    hibernate:
+      #      ddl-auto: create-drop
+    # 크게 의미는 없다, H2를 끄면 같이 날라가서
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://localhost:3306/my_waiting
+    url: jdbc:mariadb://localhost:3306/m_waiting
     username: root
-    password: 1234
+    password: qwer1234
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+      # ddl-auto: create # 앱을 열 때 DB를 '생성'해서 진행하겠다
+      # ddl-auto: update
+    show-sql: true # 테스트 할 때만
+
+
+# 세션에 관해 세션의 소멸 시간을 설정하는 방법
+# https://substantial-park-a17.notion.site/10-36136f5a91f647b499dbcb5a884aff72
+server:
+  servlet:
+    session:
+      timeout: 1800 # 90m

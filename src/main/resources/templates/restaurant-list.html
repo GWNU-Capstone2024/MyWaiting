@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments.html :: head}"></head>
+<body>
+<nav th:replace="~{fragments.html :: navigation-bar}"></nav>
+<div class="container">
+    <h2>RestaurantList</h2>
+    <table class="table table-striped">
+        <tr>
+            <th>id</th>
+            <th>user</th>
+            <th>name</th>
+            <th>phoneNumber</th>
+            <th>address</th>
+            <th>time</th>
+            <th>description</th>
+            <th>상세조회</th>
+            <th>웨이팅</th>
+            <th>삭제</th>
+        </tr>
+        <tr th:each="restaurant: ${restaurantList}">
+            <td th:text="${restaurant.id}"></td>
+            <td th:text="${restaurant.user.getEmail}"></td>
+            <td th:text="${restaurant.getName}"></td>
+            <td th:text="${restaurant.getPhoneNumber}"></td>
+            <td th:text="${restaurant.getAddress}"></td>
+            <td th:text="${restaurant.getTime}"></td>
+            <td th:text="${restaurant.getDescription}"></td>
+            <td>
+                <a th:href="@{|/restaurant/${restaurant.id}|}">조회</a>
+            </td>
+            <td>
+                <a th:href="@{|/ticket/${restaurant.id}|}">웨이팅</a>
+            </td>
+            <td>
+                <a th:href="@{|/restaurant/delete/${restaurant.id}|}">삭제</a>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>
